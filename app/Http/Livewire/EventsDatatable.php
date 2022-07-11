@@ -86,6 +86,7 @@ class EventsDatatable extends LivewireDatatable
     public function showEditModal($iId)
     {
         $this->isShownEditModal = true;
+        $this->iId = $iId;
         $oEventFormModel = EventForm::where('event_id', $iId)->first();
 
         if ($oEventFormModel !== null) {
@@ -108,6 +109,7 @@ class EventsDatatable extends LivewireDatatable
         $oEventFormModel->form_description = $this->formDesc;
         $oEventFormModel->form_reply_template = $this->replyTemplate;
         $oEventFormModel->allow_prc_info = $this->allowPrc;
+        $oEventFormModel->event_id = $this->iId;
         $oEventFormModel->require_prc_info = $this->requirePrc;
         $oEventFormModel->allow_to_follow_payment = $this->allowToFollow;
         $oEventFormModel->allow_multiple_registrants = $this->allowMultipleRegistrants;
@@ -117,6 +119,7 @@ class EventsDatatable extends LivewireDatatable
         $oEventFormModel->other_form_fields = $this->otherFormFields;
         $oEventFormModel->save();
         $this->formId = 0;
+        $this->iId = 0;
         $this->isShownEditModal = false;
     }
 }

@@ -7,6 +7,8 @@ module.exports = {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './src/**/*.{html,js}',
+        './node_modules/tw-elements/dist/js/**/*.js'
     ],
 
     theme: {
@@ -21,5 +23,5 @@ module.exports = {
         borderColor: ['responsive', 'group-hover', 'focus-within', 'hover', 'focus'],
         textColor: ['responsive', 'group-hover', 'focus-within', 'hover', 'focus'],
     },
-    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+    plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography'), require('tw-elements/dist/plugin')],
 };

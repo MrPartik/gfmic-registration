@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Event;
 use App\Models\EventForm;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Auth;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\NumberColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
@@ -110,6 +111,7 @@ class EventsDatatable extends LivewireDatatable
         $oEventFormModel->form_reply_template = $this->replyTemplate;
         $oEventFormModel->allow_prc_info = $this->allowPrc;
         $oEventFormModel->event_id = $this->iId;
+        $oEventFormModel->added_by = Auth::id();
         $oEventFormModel->require_prc_info = $this->requirePrc;
         $oEventFormModel->allow_to_follow_payment = $this->allowToFollow;
         $oEventFormModel->allow_multiple_registrants = $this->allowMultipleRegistrants;

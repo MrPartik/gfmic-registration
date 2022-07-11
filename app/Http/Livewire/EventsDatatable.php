@@ -87,35 +87,36 @@ class EventsDatatable extends LivewireDatatable
     {
         $this->isShownEditModal = true;
         $oEventFormModel = EventForm::where('event_id', $iId)->first();
-        $this->formDesc = $oEventFormModel->form_description;
-        $this->replyTemplate = $oEventFormModel->form_reply_template;
-        $this->allowPrc = $oEventFormModel->allow_prc_info;
-        $this->requirePrc = $oEventFormModel->require_prc_info;
-        $this->allowToFollow = $oEventFormModel->allow_to_follow_payment;
-        $this->allowMultipleRegistrants = $oEventFormModel->allow_multiple_registrants;
-        $this->requirePersonalInfo = $oEventFormModel->require_personal_info;
-        $this->allowOnlinePayment = $oEventFormModel->allow_online_payment;
-        $this->otherFormFields = $oEventFormModel->other_form_fields;
-        $this->formId = $oEventFormModel->event_form_id;
+
+        if ($oEventFormModel !== null) {
+            $this->formDesc = $oEventFormModel->form_description;
+            $this->replyTemplate = $oEventFormModel->form_reply_template;
+            $this->allowPrc = $oEventFormModel->allow_prc_info;
+            $this->requirePrc = $oEventFormModel->require_prc_info;
+            $this->allowToFollow = $oEventFormModel->allow_to_follow_payment;
+            $this->allowMultipleRegistrants = $oEventFormModel->allow_multiple_registrants;
+            $this->requirePersonalInfo = $oEventFormModel->require_personal_info;
+            $this->allowOnlinePayment = $oEventFormModel->allow_online_payment;
+            $this->otherFormFields = $oEventFormModel->other_form_fields;
+            $this->formId = $oEventFormModel->event_form_id;
+        }
     }
 
     public function saveEventForm()
     {
-        if($this->formId > 0) {
-            $oEventFormModel = EventForm::find($this->formId);
-            $oEventFormModel->form_description = $this->formDesc;
-            $oEventFormModel->form_reply_template = $this->replyTemplate;
-            $oEventFormModel->allow_prc_info = $this->allowPrc;
-            $oEventFormModel->require_prc_info = $this->requirePrc;
-            $oEventFormModel->allow_to_follow_payment = $this->allowToFollow;
-            $oEventFormModel->allow_multiple_registrants = $this->allowMultipleRegistrants;
-            $oEventFormModel->require_personal_info = $this->requirePersonalInfo;
-            $oEventFormModel->allow_online_payment = $this->allowOnlinePayment;
-            $oEventFormModel->allow_online_payment = $this->allowOnlinePayment;
-            $oEventFormModel->other_form_fields = $this->otherFormFields;
-            $oEventFormModel->save();
-            $this->formId = 0;
-            $this->isShownEditModal = false;
-        }
+        $oEventFormModel = ($this->formId > 0) ? EventForm::find($this->formId) : new EventForm();
+        $oEventFormModel->form_description = $this->formDesc;
+        $oEventFormModel->form_reply_template = $this->replyTemplate;
+        $oEventFormModel->allow_prc_info = $this->allowPrc;
+        $oEventFormModel->require_prc_info = $this->requirePrc;
+        $oEventFormModel->allow_to_follow_payment = $this->allowToFollow;
+        $oEventFormModel->allow_multiple_registrants = $this->allowMultipleRegistrants;
+        $oEventFormModel->require_personal_info = $this->requirePersonalInfo;
+        $oEventFormModel->allow_online_payment = $this->allowOnlinePayment;
+        $oEventFormModel->allow_online_payment = $this->allowOnlinePayment;
+        $oEventFormModel->other_form_fields = $this->otherFormFields;
+        $oEventFormModel->save();
+        $this->formId = 0;
+        $this->isShownEditModal = false;
     }
 }

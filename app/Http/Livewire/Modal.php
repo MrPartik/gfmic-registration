@@ -8,5 +8,5 @@ trait Modal {
 
     abstract public function showAddModal();
 
-    abstract public function showEditModal();
+    abstract public function showEditModal(int $iId);
 }

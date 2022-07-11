@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Event;
 use Livewire\Component;
+use App\Models\EventForm;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,7 +44,7 @@ class Events extends Component
         $this->clear();
     }
 
-    public function showEditModal()
+    public function showEditModal(int $iId)
     {
         // TODO: Implement showEditModal() method.
     }
@@ -66,6 +67,15 @@ class Events extends Component
         $oEventModel->is_active = true;
         $oEventModel->added_by = Auth::id();
         $oEventModel->save();
+        if($this->iEventId <= 0) {
+            $oEventFormModel = new EventForm();
+            $oEventFormModel->form_description = $oEventModel->description;
+            $oEventFormModel->form_reply_template = 'Thank you for registering in ' . $oEventModel->name;
+            $oEventFormModel->added_by = Auth::id();
+            $oEventFormModel->event_id = $oEventModel->event_id;
+            $oEventFormModel->save();
+        }
+
         $this->clear();
         $this->emit('refreshLivewireDatatable');
         $this->isShownAddModal = false;

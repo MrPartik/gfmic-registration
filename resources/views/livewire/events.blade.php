@@ -46,11 +46,11 @@
                 </div>
                 <div class="mt-3">
                     <div class="de_form">
-                        <label class="de_form" for="input_7_9">Please Provide Pictures Of Your Award</label>
+                        <label class="de_form" for="input_7_9">Please Provide a Featured Image in Event</label>
                         <div>
-                            <input id="uploadPicturesOfLandscapes" style="display: none" wire:model="picture" type="file" accept="image/*">
-                            <button onclick="$('#uploadPicturesOfLandscapes').click()" class="mb-5 flex items-center space-x-2 px-3 border border-blue-400 rounded-md bg-white text-blue-400 text-xs leading-4 font-medium uppercase tracking-wider hover:bg-blue-100 focus:outline-none">
-                                <span>Upload Image</span>
+                            <input id="uploadPictures" style="display: none" wire:model="picture" type="file" accept="image/*">
+                            <button onclick="$('#uploadPictures').click()" class="mb-5 flex items-center space-x-2 px-3 border border-blue-400 rounded-md bg-white text-blue-400 text-xs leading-4 font-medium uppercase tracking-wider hover:bg-blue-100 focus:outline-none">
+                                <span>Change</span>
                                 <svg class="h-5 w-5 stroke-current m-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
                                 </svg>

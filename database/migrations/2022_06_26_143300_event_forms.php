@@ -22,7 +22,6 @@ class EventForms extends Migration
             $oTable->boolean('allow_to_follow_payment')->default(true);
             $oTable->boolean('allow_multiple_registrants')->default(true);
             $oTable->boolean('require_personal_info')->default(true);
-            $oTable->boolean('require_backtrack_info')->default(true);
             $oTable->boolean('allow_online_payment')->default(false);
             $oTable->string('other_form_fields')->nullable();
             $oTable->boolean('is_active')->default(true);
